@@ -12,7 +12,8 @@ import { icons, SIZES } from '../../../constants';
 
 import styles from './welcome.style'
 const jobTypes = ["Full-time", "Part-time", "Contractor"]
-const  Welcome = () => {
+
+const  Welcome = ({searchedTerm, setSearchedTerm, handleClick}) => {
   const route = useRouter()
   const [activeJobType, setActiveJobType] = useState('Full-time')
   return (
@@ -27,11 +28,11 @@ const  Welcome = () => {
           <TextInput 
           placeholder="what are u looking for?"
           style={styles.searchInput}
-          value=''
-          onChange={()=>{}}
+          value={searchedTerm}
+          onChangeText={(text)=>setSearchedTerm(text)}
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={()=>{  }}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image
           source={icons.search}  
           resizeMode="contain"
